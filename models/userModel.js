@@ -42,6 +42,10 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'Post',
   }],
+  favorites: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'Favorites',
+  }],
   createdAt: {
     type: Date,
     default: () => {
