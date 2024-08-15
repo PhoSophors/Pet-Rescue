@@ -73,12 +73,15 @@ exports.register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    const roles = ['user'];
+    
     const newUser = new User({
       username,
       email,
       password: hashedPassword,
       otp,
       otpExpires,
+      roles,
     });
     await newUser.save();
 
@@ -153,7 +156,7 @@ exports.userLogin = async (req, res) => {
 
     // Generate access token
     const accessToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "30m", // shorter lifespan
+      expiresIn: "30d", // shorter lifespan
     });
 
     // Generate refresh token
@@ -161,7 +164,7 @@ exports.userLogin = async (req, res) => {
       { id: user._id },
       process.env.JWT_REFRESH_SECRET,
       {
-        expiresIn: "7d", // longer lifespan
+        expiresIn: "70d", // longer lifespan
       }
     );
 

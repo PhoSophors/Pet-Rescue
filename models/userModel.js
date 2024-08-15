@@ -36,7 +36,11 @@ const userSchema = new mongoose.Schema({
   },
   roles: [{
     type: String,
-    default: 'user'
+    default: ['user'],
+  }],
+  posts: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'Post',
   }],
   createdAt: {
     type: Date,
