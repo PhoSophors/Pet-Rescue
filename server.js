@@ -7,6 +7,7 @@ const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
 const favorites = require('./routes/favoriteRoutes');
 const search = require('./routes/searchRoutes');
+const adopt = require('./routes/adoptRoutes');
 // import create admin middleware
 const createDefaultAdmin = require('./middlewares/createAdminDefault');
 
@@ -22,6 +23,7 @@ app.use('/auths', userRoutes);
 app.use('/posts-content', postRoutes);
 app.use('/favorites', favorites);
 app.use('/search', search);
+app.use('/adopt', adopt);
 
 connectDB();
 

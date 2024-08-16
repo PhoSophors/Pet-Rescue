@@ -39,6 +39,11 @@ const postSchema = new mongoose.Schema({
       return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
     },
   },
+  adoptedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    default: null,
+  },
 });
 
 const Post = mongoose.model('Post', postSchema);
