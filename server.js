@@ -6,6 +6,7 @@ const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
 const favorites = require('./routes/favoriteRoutes');
+const search = require('./routes/searchRoutes');
 
 const port = 3000;
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use('/auths', userRoutes);
 app.use('/posts-content', postRoutes);
 app.use('/favorites', favorites);
+app.use('/search', search);
 
 connectDB();
 
